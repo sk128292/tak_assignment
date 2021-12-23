@@ -54,7 +54,7 @@ class HomeView extends GetView<HomeController> {
             ),
             Card(
               elevation: 5,
-              color: Colors.orangeAccent,
+              color: Colors.orange[50],
               child: Column(
                 children: [
                   Padding(
@@ -62,21 +62,35 @@ class HomeView extends GetView<HomeController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Date"),
-                        Container(
-                          child: Text("data"),
+                        Text("Date : "),
+                        SizedBox(width: 75),
+                        Expanded(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(),
+                              label: Text("23th December,2021"),
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Date"),
-                        Container(
-                          child: Text("data"),
+                        Text("Location : "),
+                        SizedBox(width: 50),
+                        Expanded(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(),
+                              label: Text("Delhi, india"),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -146,15 +160,19 @@ class HomeView extends GetView<HomeController> {
               child: ListView.builder(
                 primary: false,
                 shrinkWrap: true,
-                itemCount: 4,
+                itemCount: controller.tithiList.length,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
                       Expanded(
-                        child: Text("data"),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Text(controller.tithiList[index]["name"]),
+                        ),
                       ),
                       Expanded(
-                        child: Text(" Hi"),
+                        child: Text(
+                            controller.tithiList[index]["data"].toString()),
                       ),
                     ],
                   );
@@ -175,15 +193,19 @@ class HomeView extends GetView<HomeController> {
               child: ListView.builder(
                 primary: false,
                 shrinkWrap: true,
-                itemCount: 4,
+                itemCount: controller.nakshatra.length,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
                       Expanded(
-                        child: Text("data"),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Text(controller.nakshatra[index]["name"]),
+                        ),
                       ),
                       Expanded(
-                        child: Text(" Hi"),
+                        child: Text(
+                            controller.nakshatra[index]["data"].toString()),
                       ),
                     ],
                   );
