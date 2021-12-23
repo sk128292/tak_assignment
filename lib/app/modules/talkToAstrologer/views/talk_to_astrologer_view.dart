@@ -72,14 +72,17 @@ class TalkToAstrologerView extends GetView<TalkToAstrologerController> {
                   child: ListView.builder(
                     primary: false,
                     shrinkWrap: true,
-                    itemCount: controller.astrologerList.value.length,
+                    itemCount: controller.astrologerList.length,
                     itemBuilder: (context, index) {
-                      return Container(
+                      return Card(
+                        elevation: 5,
+                        margin: EdgeInsets.all(10),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Image.asset(
-                              "assets/logo.png",
+                            Image.network(
+                              controller
+                                  .astrologerList[index].images.large.imageUrl,
                               height: 100,
                               width: 100,
                             ),
@@ -105,7 +108,12 @@ class TalkToAstrologerView extends GetView<TalkToAstrologerController> {
                                             fontWeight: FontWeight.bold,
                                             fontSize: 18),
                                       ),
-                                      Text("25 year"),
+                                      Text(
+                                        controller.astrologerList[index]
+                                                .experience
+                                                .toString() +
+                                            " Year",
+                                      ),
                                     ],
                                   ),
                                   Row(
@@ -117,7 +125,8 @@ class TalkToAstrologerView extends GetView<TalkToAstrologerController> {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        "25 year",
+                                        controller.astrologerList[index]
+                                            .skills[0].name,
                                         style: TextStyle(fontSize: 12),
                                       ),
                                     ],
@@ -131,7 +140,7 @@ class TalkToAstrologerView extends GetView<TalkToAstrologerController> {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        "25 year",
+                                        "English, Hindi",
                                         style: TextStyle(fontSize: 12),
                                       ),
                                     ],
@@ -145,7 +154,11 @@ class TalkToAstrologerView extends GetView<TalkToAstrologerController> {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        "25 year",
+                                        "₹" +
+                                            controller.astrologerList[index]
+                                                .additionalPerMinuteCharges
+                                                .toString() +
+                                            "/per min",
                                         style: TextStyle(fontSize: 12),
                                       ),
                                     ],
