@@ -7,6 +7,7 @@ import '../controllers/talk_to_astrologer_controller.dart';
 class TalkToAstrologerView extends GetView<TalkToAstrologerController> {
   @override
   Widget build(BuildContext context) {
+    controller.getAstrologerData();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(150.0),
@@ -66,89 +67,99 @@ class TalkToAstrologerView extends GetView<TalkToAstrologerController> {
                   ),
                 ],
               ),
-              Container(
-                child: ListView.builder(
-                  primary: false,
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            "assets/logo.png",
-                            height: 100,
-                            width: 100,
-                          ),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Name",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18),
-                                    ),
-                                    Text("25 year"),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.home_outlined,
-                                      color: Colors.orange,
-                                      size: 16,
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      "25 year",
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.sort_by_alpha,
-                                      color: Colors.orange,
-                                      size: 16,
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      "25 year",
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.wallet_membership,
-                                      color: Colors.orange,
-                                      size: 16,
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      "25 year",
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                  ],
-                                ),
-                              ],
+              Obx(
+                () => Container(
+                  child: ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    itemCount: controller.astrologerList.value.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                              "assets/logo.png",
+                              height: 100,
+                              width: 100,
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        controller.astrologerList[index]
+                                                .namePrefix ??
+                                            "" +
+                                                "" +
+                                                controller.astrologerList[index]
+                                                    .firstName +
+                                                " " +
+                                                controller.astrologerList[index]
+                                                    .lastName,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18),
+                                      ),
+                                      Text("25 year"),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.home_outlined,
+                                        color: Colors.orange,
+                                        size: 16,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "25 year",
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.sort_by_alpha,
+                                        color: Colors.orange,
+                                        size: 16,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "25 year",
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.wallet_membership,
+                                        color: Colors.orange,
+                                        size: 16,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "25 year",
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),
