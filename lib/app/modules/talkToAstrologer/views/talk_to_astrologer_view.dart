@@ -163,6 +163,31 @@ class TalkToAstrologerView extends GetView<TalkToAstrologerController> {
                                       ),
                                     ],
                                   ),
+                                  Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 45),
+                                    child: MaterialButton(
+                                      color: Colors.orange,
+                                      onPressed: () {},
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Icon(
+                                            Icons.call,
+                                            color: Colors.white,
+                                          ),
+                                          Text(
+                                            "Talk on Call",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
